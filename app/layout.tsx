@@ -2,8 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "sonner";
-import Sidebar from "@/components/Sidebar";   // 👈 import sidebar
+import { Toaster } from "@/components/ui/Toaster";   // 👈 custom toaster (file 16)
+import Sidebar from "@/components/Sidebar";
+import RealTimeNotification from "../components/realtime-notification"; // 👈 add this
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +37,9 @@ export default function RootLayout({
             </main>
           </div>
 
+          {/* ✅ Fixed Notification system */}
           <Toaster position="top-right" richColors />
+          <RealTimeNotification />
         </ThemeProvider>
       </body>
     </html>
