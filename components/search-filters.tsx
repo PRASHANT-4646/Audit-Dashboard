@@ -134,7 +134,7 @@ export default function SearchFilters() {
         {/* 👥 User filter */}
         <div className="space-y-2 bg-white">
           <Label className="text-xl bg-white font-medium text-gray-900">User</Label>
-          <MultiSelect
+          <MultiSelect 
             options={userOptions}
             selected={filters.users}
             onChange={handleUserChange}
