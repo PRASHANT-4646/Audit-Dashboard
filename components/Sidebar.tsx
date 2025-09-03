@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FileText, Users, Settings } from "lucide-react";
-import { cn } from "@/lib/utils"; // shadcn helper for conditional classes
+import { FileText, Users, Settings, Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils"; 
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface NavItem {
   name: string;
@@ -38,6 +40,16 @@ function NavLink({ item, isActive }: { item: NavItem; isActive: boolean }) {
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Dark Mode toggle effect
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <aside className="h-screen w-64 flex flex-col border-r bg-white dark:bg-gray-900 shadow-md">
@@ -56,6 +68,19 @@ export default function Sidebar() {
           />
         ))}
       </nav>
+
+      {/* Dark Mode Toggle */}
+      <div className="p-4 border-t dark:border-gray-700">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setDarkMode(!darkMode)}
+          className="w-full flex items-center gap-2"
+        >
+          {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+        </Button>
+      </div>
     </aside>
   );
 }
