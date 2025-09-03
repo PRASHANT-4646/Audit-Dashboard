@@ -103,7 +103,7 @@ export default function SearchFilters() {
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             className={cn(
-              "w-full rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500",
+              "w-full bg-white rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500",
               !isSearchValid && "border-red-500 focus:ring-red-500"
             )}
           />
@@ -132,8 +132,8 @@ export default function SearchFilters() {
         </div>
 
         {/* 👥 User filter */}
-        <div className="space-y-2">
-          <Label className="text-xl font-medium text-gray-900">User</Label>
+        <div className="space-y-2 bg-white">
+          <Label className="text-xl bg-white font-medium text-gray-900">User</Label>
           <MultiSelect
             options={userOptions}
             selected={filters.users}
